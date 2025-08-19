@@ -1,0 +1,288 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'parent.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+Parent _$ParentFromJson(Map<String, dynamic> json) {
+  return _Parent.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Parent {
+  String? get id => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+  String? get firstname => throw _privateConstructorUsedError;
+  String? get middlename => throw _privateConstructorUsedError;
+  String? get lastname => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get role => throw _privateConstructorUsedError;
+
+  /// Serializes this Parent to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Parent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ParentCopyWith<Parent> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ParentCopyWith<$Res> {
+  factory $ParentCopyWith(Parent value, $Res Function(Parent) then) =
+      _$ParentCopyWithImpl<$Res, Parent>;
+  @useResult
+  $Res call(
+      {String? id,
+      String? title,
+      String? firstname,
+      String? middlename,
+      String? lastname,
+      String? email,
+      String? role});
+}
+
+/// @nodoc
+class _$ParentCopyWithImpl<$Res, $Val extends Parent>
+    implements $ParentCopyWith<$Res> {
+  _$ParentCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Parent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? firstname = freezed,
+    Object? middlename = freezed,
+    Object? lastname = freezed,
+    Object? email = freezed,
+    Object? role = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      firstname: freezed == firstname
+          ? _value.firstname
+          : firstname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      middlename: freezed == middlename
+          ? _value.middlename
+          : middlename // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastname: freezed == lastname
+          ? _value.lastname
+          : lastname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ParentImplCopyWith<$Res> implements $ParentCopyWith<$Res> {
+  factory _$$ParentImplCopyWith(
+          _$ParentImpl value, $Res Function(_$ParentImpl) then) =
+      __$$ParentImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? id,
+      String? title,
+      String? firstname,
+      String? middlename,
+      String? lastname,
+      String? email,
+      String? role});
+}
+
+/// @nodoc
+class __$$ParentImplCopyWithImpl<$Res>
+    extends _$ParentCopyWithImpl<$Res, _$ParentImpl>
+    implements _$$ParentImplCopyWith<$Res> {
+  __$$ParentImplCopyWithImpl(
+      _$ParentImpl _value, $Res Function(_$ParentImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Parent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? firstname = freezed,
+    Object? middlename = freezed,
+    Object? lastname = freezed,
+    Object? email = freezed,
+    Object? role = freezed,
+  }) {
+    return _then(_$ParentImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      firstname: freezed == firstname
+          ? _value.firstname
+          : firstname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      middlename: freezed == middlename
+          ? _value.middlename
+          : middlename // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastname: freezed == lastname
+          ? _value.lastname
+          : lastname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ParentImpl implements _Parent {
+  _$ParentImpl(
+      {this.id,
+      this.title,
+      this.firstname,
+      this.middlename,
+      this.lastname,
+      this.email,
+      this.role});
+
+  factory _$ParentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ParentImplFromJson(json);
+
+  @override
+  final String? id;
+  @override
+  final String? title;
+  @override
+  final String? firstname;
+  @override
+  final String? middlename;
+  @override
+  final String? lastname;
+  @override
+  final String? email;
+  @override
+  final String? role;
+
+  @override
+  String toString() {
+    return 'Parent(id: $id, title: $title, firstname: $firstname, middlename: $middlename, lastname: $lastname, email: $email, role: $role)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ParentImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.firstname, firstname) ||
+                other.firstname == firstname) &&
+            (identical(other.middlename, middlename) ||
+                other.middlename == middlename) &&
+            (identical(other.lastname, lastname) ||
+                other.lastname == lastname) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.role, role) || other.role == role));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, id, title, firstname, middlename, lastname, email, role);
+
+  /// Create a copy of Parent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ParentImplCopyWith<_$ParentImpl> get copyWith =>
+      __$$ParentImplCopyWithImpl<_$ParentImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ParentImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Parent implements Parent {
+  factory _Parent(
+      {final String? id,
+      final String? title,
+      final String? firstname,
+      final String? middlename,
+      final String? lastname,
+      final String? email,
+      final String? role}) = _$ParentImpl;
+
+  factory _Parent.fromJson(Map<String, dynamic> json) = _$ParentImpl.fromJson;
+
+  @override
+  String? get id;
+  @override
+  String? get title;
+  @override
+  String? get firstname;
+  @override
+  String? get middlename;
+  @override
+  String? get lastname;
+  @override
+  String? get email;
+  @override
+  String? get role;
+
+  /// Create a copy of Parent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ParentImplCopyWith<_$ParentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
