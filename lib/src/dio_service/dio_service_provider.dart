@@ -9,13 +9,10 @@ final dioServiceProvider = Provider<DioService>((ref) {
     dio: Dio(
       BaseOptions(
         baseUrl: dotenv.env['BASE_URL'] ?? '',
-        //check if in production or not by checking the environment variable
+        // check the environment variable
       ),
-
-      // add interceptors
-    )
-    //   ..interceptors.add(TokenCheckInterceptor())
-    //   ..interceptors.add(RefreshTokenInterceptor()),
+    ),
+    // add interceptors
     // talker: logger,
   );
 });

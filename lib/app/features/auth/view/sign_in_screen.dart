@@ -1,28 +1,47 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spot_on/app/core/router/app_router.gr.dart';
 import 'package:spot_on/app/core/utils/app_theme/colorpallete.dart';
 import 'package:spot_on/app/core/utils/text_theme/app_typography.dart';
+import 'package:spot_on/app/features/auth/providers/auth_providers.dart';
 import 'package:spot_on/app/features/auth/widgets/custom_text_form_field.dart';
 import 'package:spot_on/app/features/auth/widgets/onboarding_elevated_buttons.dart';
 import 'package:spot_on/app/features/auth/widgets/toogle_widget.dart';
 import 'package:spot_on/gen/assets.gen.dart';
 
 @RoutePage()
-class SignInScreen extends StatefulWidget {
+class SignInScreen extends ConsumerStatefulWidget {
   const SignInScreen({super.key, required this.role});
   final String role;
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _SignInScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+class _SignInScreenState extends ConsumerState<SignInScreen> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  bool _rememberMe = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold( appBar: AppBar(backgroundColor: Colors.white,),
+    final state = ref.watch(loginProviders);
+    return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.white),
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.only(top: 13, left: 24, right: 24),
@@ -33,11 +52,11 @@ class _SignInScreenState extends State<SignInScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(Assets.spotonLogo.path, width: 191),
-              SizedBox(height: 14),
+              SizedBox(height: 14.h),
               Text('Welcome Back', style: AppTypography.bold),
-              SizedBox(height: 8),
+              SizedBox(height: 8.h),
               Text("Login to your account", style: AppTypography.regular),
-              SizedBox(height: 24),
+              SizedBox(height: 24.h),
               //widget that changes based on the role selected
               ToogleWidget(role: widget.role),
               SizedBox(height: 24),
@@ -62,17 +81,21 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
               const SizedBox(height: 10),
               Row(
-             
                 children: [
-                 GestureDetector(
-                  onTap: () {
-                    setState(() {
-                       Image.asset(Assets.rememberCheckCircle.path, width: 16,);
-                    });
-                   
-                  },
-                  child: Image.asset(Assets.rememberCircle.path, width: 16,)),
-                 SizedBox(width: 8,),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _rememberMe = !_rememberMe;
+                      });
+                    },
+                    child: Image.asset(
+                      _rememberMe
+                          ? Assets.rememberCheckCircle.path
+                          : Assets.rememberCircle.path,
+                      width: 16,
+                    ),
+                  ),
+                  SizedBox(width: 8),
                   Text(
                     "Remember Me",
                     style: AppTypography.regular.copyWith(
@@ -83,16 +106,24 @@ class _SignInScreenState extends State<SignInScreen> {
                   Spacer(),
                   GestureDetector(
                     onTap: () {},
-                    child: Text("Forgot Password?", style: AppTypography.roboto),
+                    child: Text(
+                      "Forgot Password?",
+                      style: AppTypography.roboto,
+                    ),
                   ),
                 ],
               ),
               const SizedBox(height: 20.68),
               OnboardingElevatedButtons(
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     // Form is valid, proceed with sign in
-                    context.router.push(DashboardRoute());
+                    final isLoggedIn = await ref
+                        .read(loginProviders.notifier)
+                        .login(emailController.text, passwordController.text);
+                    if (isLoggedIn && mounted) {
+                      context.router.push(DashboardRoute());
+                    }
                   }
                 },
                 text: 'Sign In',

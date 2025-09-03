@@ -8,7 +8,6 @@ class LoginRequest with _$LoginRequest {
   factory LoginRequest({
     String? email,
     String? password,
-    String? fcm,
   }) = _LoginRequest;
 
   factory LoginRequest.fromJson(Map<String, dynamic> json) =>

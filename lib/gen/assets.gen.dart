@@ -33,6 +33,7 @@ class $AssetsIconsGen {
 class Assets {
   const Assets._();
 
+  static const String aEnv = '.env';
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const AssetGenImage onboard1 = AssetGenImage('assets/onboard-1.png');
   static const AssetGenImage onboard2 = AssetGenImage('assets/onboard-2.png');
@@ -45,7 +46,8 @@ class Assets {
       AssetGenImage('assets/spoton-logo.png');
 
   /// List of all assets
-  static List<AssetGenImage> get values => [
+  static List<dynamic> get values => [
+        aEnv,
         onboard1,
         onboard2,
         onboard3,

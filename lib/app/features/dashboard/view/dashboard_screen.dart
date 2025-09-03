@@ -20,7 +20,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
+      appBar: AppBar( leading: Text(''),
         title: Text(
           "Dashboard",
           style: AppTypography.nunitoSans.copyWith(
@@ -32,7 +32,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         backgroundColor: Colors.white,
         centerTitle: false,
       ),
-      drawer: Drawer(),
+      //drawer: Drawer(),
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(

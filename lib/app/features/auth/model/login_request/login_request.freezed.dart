@@ -22,7 +22,6 @@ LoginRequest _$LoginRequestFromJson(Map<String, dynamic> json) {
 mixin _$LoginRequest {
   String? get email => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
-  String? get fcm => throw _privateConstructorUsedError;
 
   /// Serializes this LoginRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +39,7 @@ abstract class $LoginRequestCopyWith<$Res> {
           LoginRequest value, $Res Function(LoginRequest) then) =
       _$LoginRequestCopyWithImpl<$Res, LoginRequest>;
   @useResult
-  $Res call({String? email, String? password, String? fcm});
+  $Res call({String? email, String? password});
 }
 
 /// @nodoc
@@ -60,7 +59,6 @@ class _$LoginRequestCopyWithImpl<$Res, $Val extends LoginRequest>
   $Res call({
     Object? email = freezed,
     Object? password = freezed,
-    Object? fcm = freezed,
   }) {
     return _then(_value.copyWith(
       email: freezed == email
@@ -70,10 +68,6 @@ class _$LoginRequestCopyWithImpl<$Res, $Val extends LoginRequest>
       password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fcm: freezed == fcm
-          ? _value.fcm
-          : fcm // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -87,7 +81,7 @@ abstract class _$$LoginRequestImplCopyWith<$Res>
       __$$LoginRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? email, String? password, String? fcm});
+  $Res call({String? email, String? password});
 }
 
 /// @nodoc
@@ -105,7 +99,6 @@ class __$$LoginRequestImplCopyWithImpl<$Res>
   $Res call({
     Object? email = freezed,
     Object? password = freezed,
-    Object? fcm = freezed,
   }) {
     return _then(_$LoginRequestImpl(
       email: freezed == email
@@ -116,10 +109,6 @@ class __$$LoginRequestImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
-      fcm: freezed == fcm
-          ? _value.fcm
-          : fcm // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -127,7 +116,7 @@ class __$$LoginRequestImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$LoginRequestImpl implements _LoginRequest {
-  _$LoginRequestImpl({this.email, this.password, this.fcm});
+  _$LoginRequestImpl({this.email, this.password});
 
   factory _$LoginRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$LoginRequestImplFromJson(json);
@@ -136,12 +125,10 @@ class _$LoginRequestImpl implements _LoginRequest {
   final String? email;
   @override
   final String? password;
-  @override
-  final String? fcm;
 
   @override
   String toString() {
-    return 'LoginRequest(email: $email, password: $password, fcm: $fcm)';
+    return 'LoginRequest(email: $email, password: $password)';
   }
 
   @override
@@ -151,13 +138,12 @@ class _$LoginRequestImpl implements _LoginRequest {
             other is _$LoginRequestImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.fcm, fcm) || other.fcm == fcm));
+                other.password == password));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, email, password, fcm);
+  int get hashCode => Object.hash(runtimeType, email, password);
 
   /// Create a copy of LoginRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -176,10 +162,8 @@ class _$LoginRequestImpl implements _LoginRequest {
 }
 
 abstract class _LoginRequest implements LoginRequest {
-  factory _LoginRequest(
-      {final String? email,
-      final String? password,
-      final String? fcm}) = _$LoginRequestImpl;
+  factory _LoginRequest({final String? email, final String? password}) =
+      _$LoginRequestImpl;
 
   factory _LoginRequest.fromJson(Map<String, dynamic> json) =
       _$LoginRequestImpl.fromJson;
@@ -188,8 +172,6 @@ abstract class _LoginRequest implements LoginRequest {
   String? get email;
   @override
   String? get password;
-  @override
-  String? get fcm;
 
   /// Create a copy of LoginRequest
   /// with the given fields replaced by the non-null parameter values.
