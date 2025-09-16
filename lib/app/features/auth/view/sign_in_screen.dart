@@ -128,28 +128,30 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 },
                 text: 'Sign In',
               ),
-              const SizedBox(height: 25),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don't have an account? ",
-                    style: AppTypography.nunito.copyWith(color: Colors.black),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      context.router.push(SignUpRoute(role: widget.role));
-                    },
-                    child: Text(
-                      "Sign Up",
-                      style: AppTypography.nunito.copyWith(
-                        decoration: TextDecoration.underline,
-                        color: Colorpallete.primary500,
+              if (widget.role != 'ADMIN') ...[
+                const SizedBox(height: 25),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don't have an account? ",
+                      style: AppTypography.nunito.copyWith(color: Colors.black),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        context.router.push(SignUpRoute(role: widget.role));
+                      },
+                      child: Text(
+                        "Sign Up",
+                        style: AppTypography.nunito.copyWith(
+                          decoration: TextDecoration.underline,
+                          color: Colorpallete.primary500,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+              ],
             ],
           ),
         ),

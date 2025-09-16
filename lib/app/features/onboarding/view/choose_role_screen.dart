@@ -29,7 +29,7 @@ class _ChooseRoleScreenState extends State<ChooseRoleScreen> {
             Center(child: Text('CHOOSE YOUR ROLE', style: AppTypography.bold.copyWith(fontSize: 33.97))),
             const SizedBox(height: 45,),
             CustomButton(onPressed: (){
-               context.router.push(SignUpRoute(role: 'ADMIN'));
+               context.router.push(SignInRoute(role: 'ADMIN'));
             }, text: 'ADMIN'),
             const SizedBox(height: 29,),
             CustomButton(onPressed: (){
