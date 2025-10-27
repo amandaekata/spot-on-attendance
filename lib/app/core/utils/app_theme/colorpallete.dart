@@ -7,4 +7,5 @@ abstract class Colorpallete {
   static const primary50 = Color(0xffEDEFFE);
   static const primary300 = Color(0xff8895F9);
   static const primary500 = Color(0xff4E61F6);
+  static const secondary100 = Color(0xff6D717F);
 }

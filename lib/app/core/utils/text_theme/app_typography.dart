@@ -41,4 +41,9 @@ abstract class AppTypography {
     fontSize: 16,
     fontWeight: FontWeight.w600,
   );
+
+  static final quickBold = GoogleFonts.quicksand(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  );
 }

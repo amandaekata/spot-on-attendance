@@ -127,7 +127,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             const SizedBox(height: 48),
             OnboardingElevatedButtons(
               onPressed: () {
-                context.router.push(DashboardRoute());
+                context.router.push(BottomNavigationBarWidget());
               },
               text: 'Sign Up',
             ),

@@ -20,6 +20,7 @@ class AuthProviders extends StateNotifier<AuthState> {
 
   final ILoadingService _loadingService;
   final LoginRepository _loginRepository;
+  
 
   void onEmailChange(String email) {
     state = state.copyWith(email: email);
@@ -69,9 +70,7 @@ class AuthProviders extends StateNotifier<AuthState> {
     bool isSignedUp = false;
     try {
       _loadingService.showLoading();
-      // NOTE: You will need to get the title and institutionId from the UI.
-      // I am using dummy data for now.
-      // I'm also splitting the full name into first and last names.
+     
       final nameParts = name.split(' ');
       final firstName = nameParts.isNotEmpty ? nameParts.first : '';
       final lastName = nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '';
@@ -82,7 +81,7 @@ class AuthProviders extends StateNotifier<AuthState> {
         lastName: lastName,
         email: email,
         password: password,
-        institutionId: '3fa85f64-5717-4562-b3fc-2c963f66afa6', // Dummy data
+        institutionId: 'c19cbb34-a1fd-4e2c-aba6-f0ba72460e25', 
       );
 
       final response = await _loginRepository.signUp(request).run();

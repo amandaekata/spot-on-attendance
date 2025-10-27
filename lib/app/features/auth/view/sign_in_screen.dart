@@ -122,7 +122,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                         .read(loginProviders.notifier)
                         .login(emailController.text, passwordController.text);
                     if (isLoggedIn && mounted) {
-                      context.router.push(DashboardRoute());
+                      context.router.push(const BottomNavigationBarWidget());
                     }
                   }
                 },

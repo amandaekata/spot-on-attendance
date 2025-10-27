@@ -16,6 +16,17 @@ class $AssetsIconsGen {
   AssetGenImage get arrowRight =>
       const AssetGenImage('assets/icons/arrow-right.png');
 
+  /// File path: assets/icons/bell.png
+  AssetGenImage get bell => const AssetGenImage('assets/icons/bell.png');
+
+  /// File path: assets/icons/courses_icon.png
+  AssetGenImage get coursesIcon =>
+      const AssetGenImage('assets/icons/courses_icon.png');
+
+  /// File path: assets/icons/dashboard_icon.png
+  AssetGenImage get dashboardIcon =>
+      const AssetGenImage('assets/icons/dashboard_icon.png');
+
   /// File path: assets/icons/list.png
   AssetGenImage get list => const AssetGenImage('assets/icons/list.png');
 
@@ -26,34 +37,64 @@ class $AssetsIconsGen {
   /// File path: assets/icons/plus.png
   AssetGenImage get plus => const AssetGenImage('assets/icons/plus.png');
 
+  /// File path: assets/icons/reports_icon.png
+  AssetGenImage get reportsIcon =>
+      const AssetGenImage('assets/icons/reports_icon.png');
+
+  /// File path: assets/icons/settings_icon.png
+  AssetGenImage get settingsIcon =>
+      const AssetGenImage('assets/icons/settings_icon.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [arrowRight, list, navArrowRight, plus];
+  List<AssetGenImage> get values => [
+        arrowRight,
+        bell,
+        coursesIcon,
+        dashboardIcon,
+        list,
+        navArrowRight,
+        plus,
+        reportsIcon,
+        settingsIcon
+      ];
 }
 
 class Assets {
   const Assets._();
 
   static const String aEnv = '.env';
+  static const AssetGenImage attendanceSummaryNotification =
+      AssetGenImage('assets/attendance_summary_notification.png');
+  static const AssetGenImage confirmAvailability =
+      AssetGenImage('assets/confirm_availability.png');
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const AssetGenImage onboard1 = AssetGenImage('assets/onboard-1.png');
   static const AssetGenImage onboard2 = AssetGenImage('assets/onboard-2.png');
   static const AssetGenImage onboard3 = AssetGenImage('assets/onboard-3.png');
+  static const AssetGenImage purpleBellNotification =
+      AssetGenImage('assets/purple_bell_notification.png');
   static const AssetGenImage rememberCheckCircle =
       AssetGenImage('assets/remember-check-circle.png');
   static const AssetGenImage rememberCircle =
       AssetGenImage('assets/remember-circle.png');
   static const AssetGenImage spotonLogo =
       AssetGenImage('assets/spoton-logo.png');
+  static const AssetGenImage yellowBellNotification =
+      AssetGenImage('assets/yellow_bell_notification.png');
 
   /// List of all assets
   static List<dynamic> get values => [
         aEnv,
+        attendanceSummaryNotification,
+        confirmAvailability,
         onboard1,
         onboard2,
         onboard3,
+        purpleBellNotification,
         rememberCheckCircle,
         rememberCircle,
-        spotonLogo
+        spotonLogo,
+        yellowBellNotification
       ];
 }
 

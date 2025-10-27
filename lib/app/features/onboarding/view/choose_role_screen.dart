@@ -16,36 +16,58 @@ class ChooseRoleScreen extends StatefulWidget {
 class _ChooseRoleScreenState extends State<ChooseRoleScreen> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
-        body: Padding(
+      body: Padding(
         padding: const EdgeInsets.only(top: 58, left: 24, right: 24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(Assets.spotonLogo.path, width: 191),
-             SizedBox(height: 39.48),
-            Center(child: Text('CHOOSE YOUR ROLE', style: AppTypography.bold.copyWith(fontSize: 33.97))),
-            const SizedBox(height: 45,),
-            CustomButton(onPressed: (){
-               context.router.push(SignInRoute(role: 'ADMIN'));
-            }, text: 'ADMIN'),
-            const SizedBox(height: 29,),
-            CustomButton(onPressed: (){
-              context.router.push(SignUpRoute(role: 'LECTURER'));
-            }, text: 'LECTURER'),
-            const SizedBox(height: 29,),
-            CustomButton(onPressed: (){
-               context.router.push(SignUpRoute(role: 'STUDENT'));
-            }, text: 'STUDENT'),
-
-
-
-
+            SizedBox(height: 39.48),
+            Center(
+              child: Text(
+                'CHOOSE YOUR ROLE',
+                style: AppTypography.bold.copyWith(fontSize: 33.97),
+              ),
+            ),
+            const SizedBox(height: 45),
+            CustomButton(
+              onPressed: () {
+                context.router.push(SignInRoute(role: 'ADMIN'));
+              },
+              text: 'ADMIN',
+              textStyle: AppTypography.bold.copyWith(
+                fontSize: 24,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 29),
+            CustomButton(
+              onPressed: () {
+                context.router.push(SignInRoute(role: 'LECTURER'));
+              },
+              text: 'LECTURER',
+              textStyle: AppTypography.bold.copyWith(
+                fontSize: 24,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 29),
+            CustomButton(
+              onPressed: () {
+                context.router.push(SignInRoute(role: 'STUDENT'));
+              },
+              text: 'STUDENT',
+              textStyle: AppTypography.bold.copyWith(
+                fontSize: 24,
+                color: Colors.white,
+              ),
+            ),
           ],
         ),
-        ),
+      ),
     );
   }
 }
