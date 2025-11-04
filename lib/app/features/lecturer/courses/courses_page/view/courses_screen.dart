@@ -19,7 +19,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
       appBar: AppBar(
         centerTitle: false,
         backgroundColor: Colors.white,
-        title: Text('Courses', style: AppTypography.nunitoSans,),
+        title: Text('Courses', style: AppTypography.appBar,),
       ),
       body: Padding(
         padding: const EdgeInsets.all(24),

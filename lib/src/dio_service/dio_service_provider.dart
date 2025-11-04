@@ -12,6 +12,7 @@ final dioServiceProvider = Provider<DioService>((ref) {
         // check the environment variable
       ),
     ),
+    ref: ref, // Pass the ref to the DioService
     // add interceptors
     // talker: logger,
   );

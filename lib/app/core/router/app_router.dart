@@ -4,7 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:spot_on/app/core/router/app_router.gr.dart';
 
 @AutoRouterConfig()
-class AppRouter extends $AppRouter {
+ class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
     AutoRoute(page: SplashRoute.page, initial: true),
@@ -21,5 +21,12 @@ class AppRouter extends $AppRouter {
     AutoRoute(page: NotificationsRoute.page),
     AutoRoute(page: StartAttendanceRoute.page),
     AutoRoute(page: ClassAvailabilityRoute.page),
+    AutoRoute(page: StudentBottomNavigationBarRoute.page),
+    AutoRoute(page: AdminDashboardRoute.page),
+    AutoRoute(page: AdminManageUsersRoute.page),
+    AutoRoute(page: AdminGenerateSchoolCodeRoute.page),
+    AutoRoute(page: AdminAttendanceReportRoute.page),
+    AutoRoute(page: AdminSettingsRoute.page),
+
   ];
 }

@@ -5,7 +5,7 @@ part 'user.g.dart';
 
 //example response from login endpoint. This is like the user model .
 @freezed
-class User with _$User {
+abstract class User with _$User {
   factory User({
     String? id,
     String? title,

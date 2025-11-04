@@ -2,7 +2,7 @@ part of 'login_repository.dart';
 
 class LoginRepositoryImpl implements LoginRepository {
   LoginRepositoryImpl({required DioService dioService, AuthClient? client})
-    : _client = client ?? AuthClient(dioService.dio);
+      : _client = client ?? AuthClient(dioService.dio);
 
   final AuthClient _client;
   @override
@@ -18,6 +18,25 @@ class LoginRepositoryImpl implements LoginRepository {
   TaskEither<String, SignUpResponse> signUp(SignUpRequest signUpRequest) {
     return TaskEither.tryCatch(
       () => _client.signup(signUpRequest),
+      (error, stackTrace) =>
+          AppHttpClientException.parseException(error, s: stackTrace),
+    );
+  }
+
+  @override
+  TaskEither<String, LoginResponse> studentLogin(LoginRequest loginRequest) {
+    return TaskEither.tryCatch(
+      () => _client.studentLogin(loginRequest),
+      (error, stackTrace) =>
+          AppHttpClientException.parseException(error, s: stackTrace),
+    );
+  }
+
+  @override
+  TaskEither<String, SignUpResponse> studentSignUp(
+      StudentSignUpRequest signUpRequest) {
+    return TaskEither.tryCatch(
+      () => _client.studentSignup(signUpRequest),
       (error, stackTrace) =>
           AppHttpClientException.parseException(error, s: stackTrace),
     );

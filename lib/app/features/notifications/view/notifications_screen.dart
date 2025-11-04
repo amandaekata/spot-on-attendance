@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:spot_on/app/core/utils/app_theme/colorpallete.dart';
 import 'package:spot_on/app/core/utils/text_theme/app_typography.dart';
 
-import 'package:spot_on/app/features/notifications/widget/notification_widget.dart';
+import 'package:spot_on/app/core/widgets/notification_widget.dart';
 import 'package:spot_on/gen/assets.gen.dart';
 
 @RoutePage()

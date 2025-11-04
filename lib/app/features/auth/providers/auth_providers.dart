@@ -5,10 +5,9 @@ import 'package:spot_on/app/core/utils/loading_utils/i_loading_service.dart';
 import 'package:spot_on/app/core/utils/loading_utils/loading_service_impl.dart';
 import 'package:spot_on/app/features/auth/model/login_request/login_request.dart';
 import 'package:spot_on/app/features/auth/model/sign_up_request.dart/sign_up_request.dart';
+import 'package:spot_on/app/features/auth/model/sign_up_request.dart/student_signup_request.dart';
 import 'package:spot_on/app/features/auth/providers/auth_state.dart';
 import 'package:spot_on/app/features/auth/repository/login_repository.dart';
-
-
 
 class AuthProviders extends StateNotifier<AuthState> {
   AuthProviders({
@@ -39,12 +38,11 @@ class AuthProviders extends StateNotifier<AuthState> {
 
       response.fold(
         (l) {
-          _loadingService.showError(l);
           log(l);
+          _loadingService.showError(l);
         },
         (r) {
-          log(r.user.toString());
-          state = state.copyWith(user: r.user);
+          state = state.copyWith(user: r.user, authToken: r.authToken);
           _loadingService.dismiss();
           isValid = true;
         },
@@ -59,6 +57,33 @@ class AuthProviders extends StateNotifier<AuthState> {
       rethrow;
     }
 
+    return isValid;
+  }
+
+  Future<bool> studentLogin(String email, String password) async {
+    bool isValid = false;
+    try {
+      _loadingService.showLoading();
+      final request = LoginRequest(email: email, password: password);
+      final response = await _loginRepository.studentLogin(request).run();
+
+      response.fold(
+        (l) {
+          _loadingService.showError(l);
+          log(l);
+        },
+        (r) {
+          state = state.copyWith(user: r.user, authToken: r.authToken);
+          isValid = true;
+          _loadingService.dismiss();
+        },
+      );
+    } catch (e) {
+      log(e.toString());
+      _loadingService.showError(e.toString());
+      isValid = false;
+      rethrow;
+    }
     return isValid;
   }
 
@@ -85,6 +110,51 @@ class AuthProviders extends StateNotifier<AuthState> {
       );
 
       final response = await _loginRepository.signUp(request).run();
+      response.fold(
+        (l) {
+          _loadingService.showError(l);
+          log(l);
+        },
+        (r) {
+          log(r.user.toString());
+          state = state.copyWith(user: r.user);
+          _loadingService.dismiss();
+          isSignedUp = true;
+        },
+      );
+    } catch (e) {
+      log(e.toString());
+      _loadingService.showError(e.toString());
+      isSignedUp = false;
+      rethrow;
+    }
+    return isSignedUp;
+  }
+
+  Future<bool> studentSignup({
+    required String name,
+    required String email,
+    required String password,
+    required String schoolCode,
+  }) async {
+    bool isSignedUp = false;
+    try {
+      _loadingService.showLoading();
+
+      final nameParts = name.split(' ');
+      final firstName = nameParts.isNotEmpty ? nameParts.first : '';
+      final lastName =
+          nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '';
+
+      final request = StudentSignUpRequest(
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+        schoolCode: schoolCode,
+      );
+
+      final response = await _loginRepository.studentSignUp(request).run();
       response.fold(
         (l) {
           _loadingService.showError(l);

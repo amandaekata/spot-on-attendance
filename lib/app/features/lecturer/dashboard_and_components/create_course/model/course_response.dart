@@ -4,7 +4,7 @@ part 'course_response.freezed.dart';
 part 'course_response.g.dart';
 
 @freezed
-class CourseListResponse with _$CourseListResponse {
+abstract class CourseListResponse with _$CourseListResponse {
   const factory CourseListResponse({
     required bool success,
     required int total,
@@ -16,7 +16,7 @@ class CourseListResponse with _$CourseListResponse {
 }
 
 @freezed
-class CourseItem with _$CourseItem {
+abstract class CourseItem with _$CourseItem {
   const factory CourseItem({
     required String id,
     required String name,
@@ -35,7 +35,7 @@ class CourseItem with _$CourseItem {
 }
 
 @freezed
-class Department with _$Department {
+abstract class Department with _$Department {
   const factory Department({
     required String id,
     required String name,
@@ -47,7 +47,7 @@ class Department with _$Department {
 }
 
 @freezed
-class Faculty with _$Faculty {
+abstract class Faculty with _$Faculty {
   const factory Faculty({
     required String id,
     required String name,

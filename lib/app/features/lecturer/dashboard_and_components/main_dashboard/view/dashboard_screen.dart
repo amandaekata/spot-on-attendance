@@ -25,7 +25,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
      appBar: AppBar(
         backgroundColor: Colors.white,
         leading: Text(''),
-        title: Text('Dashboard', style: AppTypography.nunitoSans),
+        title: Text('Dashboard', style: AppTypography.appBar),
         centerTitle: false,
         actions: [
           IconButton(
@@ -51,7 +51,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Welcome __",
+              "Welcome Dr. Smith",
               style: AppTypography.bold.copyWith(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
@@ -88,7 +88,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             const SizedBox(height: 10),
             //placeholder to be replaced with expanded listview
             ScheduleCoursesButton(
-              title: 'CSC 396 - Placeholder Course',
+              title: 'CSC 396 - Advanced Programming',
               schedule: 'Monday, Wednesday | 10:00 AM',
               onPressed: () {},
             ),
@@ -96,8 +96,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             Text('Recent Attendance', style: AppTypography.bold),
             SizedBox(height: 10,),
             ReportWidget(),
-            SizedBox(height: 10,),
-            ReportWidget(),
+            // SizedBox(height: 10,),
+            // ReportWidget(),
             SizedBox(height: 10,),
             SizedBox(
               width: double.infinity,

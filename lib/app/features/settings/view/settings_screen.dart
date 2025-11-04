@@ -50,7 +50,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title:  Text('Settings', style: AppTypography.sBold.copyWith(fontSize: 24),),
+        title:  Text('Settings', style: AppTypography.appBar),
         centerTitle: false,
         actions: [
           IconButton(

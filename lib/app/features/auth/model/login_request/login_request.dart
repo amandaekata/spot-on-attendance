@@ -4,7 +4,7 @@ part 'login_request.g.dart';
 part 'login_request.freezed.dart';
 //This is what the app will collect from the user when they want to login
 @freezed
-class LoginRequest with _$LoginRequest {
+abstract class LoginRequest with _$LoginRequest {
   factory LoginRequest({
     String? email,
     String? password,

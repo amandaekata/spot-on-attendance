@@ -4,6 +4,7 @@ import 'package:spot_on/app/features/auth/client/auth_client.dart';
 import 'package:spot_on/app/features/auth/model/login_request/login_request.dart';
 import 'package:spot_on/app/features/auth/model/login_response/login_response.dart';
 import 'package:spot_on/app/features/auth/model/sign_up_request.dart/sign_up_request.dart';
+import 'package:spot_on/app/features/auth/model/sign_up_request.dart/student_signup_request.dart';
 import 'package:spot_on/app/features/auth/model/sign_up_response/sign_up_response.dart';
 import 'package:spot_on/src/dio_service/dio_service.dart';
 import 'package:spot_on/src/dio_service/dio_service_provider.dart';
@@ -19,5 +20,13 @@ abstract class LoginRepository {
 
   TaskEither<String, SignUpResponse> signUp(
     SignUpRequest signUpRequest,
+  );
+
+  TaskEither<String, LoginResponse> studentLogin(
+    LoginRequest loginRequest,
+  );
+
+  TaskEither<String, SignUpResponse> studentSignUp(
+    StudentSignUpRequest signUpRequest,
   );
 }

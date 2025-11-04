@@ -43,116 +43,134 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.white),
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.only(top: 13, left: 24, right: 24),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.asset(Assets.spotonLogo.path, width: 191),
-              SizedBox(height: 14.h),
-              Text('Welcome Back', style: AppTypography.bold),
-              SizedBox(height: 8.h),
-              Text("Login to your account", style: AppTypography.regular),
-              SizedBox(height: 24.h),
-              //widget that changes based on the role selected
-              ToogleWidget(role: widget.role),
-              SizedBox(height: 24),
-              Text('Email Address', style: AppTypography.sBold),
-              const SizedBox(height: 1),
-              CustomTextFormField(
-                isPassword: false,
-                keyboardType: TextInputType.text,
-                controller: emailController,
-                validator: "Email cannot be empty",
-                hintText: "Enter your Email address",
-              ),
-              const SizedBox(height: 16),
-              Text('Enter Password', style: AppTypography.sBold),
-              const SizedBox(height: 1),
-              CustomTextFormField(
-                isPassword: true,
-                controller: passwordController,
-                keyboardType: TextInputType.text,
-                validator: 'Please enter your password',
-                hintText: "Enter your password",
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _rememberMe = !_rememberMe;
-                      });
-                    },
-                    child: Image.asset(
-                      _rememberMe
-                          ? Assets.rememberCheckCircle.path
-                          : Assets.rememberCircle.path,
-                      width: 16,
-                    ),
-                  ),
-                  SizedBox(width: 8),
-                  Text(
-                    "Remember Me",
-                    style: AppTypography.regular.copyWith(
-                      color: Colors.black,
-                      fontSize: 10,
-                    ),
-                  ),
-                  Spacer(),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Text(
-                      "Forgot Password?",
-                      style: AppTypography.roboto,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20.68),
-              OnboardingElevatedButtons(
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    // Form is valid, proceed with sign in
-                    final isLoggedIn = await ref
-                        .read(loginProviders.notifier)
-                        .login(emailController.text, passwordController.text);
-                    if (isLoggedIn && mounted) {
-                      context.router.push(const BottomNavigationBarWidget());
-                    }
-                  }
-                },
-                text: 'Sign In',
-              ),
-              if (widget.role != 'ADMIN') ...[
-                const SizedBox(height: 25),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 13, left: 24, right: 24),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset(Assets.spotonLogo.path, width: 191),
+                SizedBox(height: 14.h),
+                Text('Welcome Back', style: AppTypography.bold),
+                SizedBox(height: 8.h),
+                Text("Login to your account", style: AppTypography.regular),
+                SizedBox(height: 24.h),
+                //widget that changes based on the role selected
+                ToogleWidget(role: widget.role),
+                SizedBox(height: 24),
+                Text('Email Address', style: AppTypography.sBold),
+                const SizedBox(height: 1),
+                CustomTextFormField(
+                  isPassword: false,
+                  keyboardType: TextInputType.text,
+                  controller: emailController,
+                  validator: "Email cannot be empty",
+                  hintText: "Enter your Email address",
+                ),
+                const SizedBox(height: 16),
+                Text('Enter Password', style: AppTypography.sBold),
+                const SizedBox(height: 1),
+                CustomTextFormField(
+                  isPassword: true,
+                  controller: passwordController,
+                  keyboardType: TextInputType.text,
+                  validator: 'Please enter your password',
+                  hintText: "Enter your password",
+                ),
+                const SizedBox(height: 10),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Don't have an account? ",
-                      style: AppTypography.nunito.copyWith(color: Colors.black),
-                    ),
                     GestureDetector(
                       onTap: () {
-                        context.router.push(SignUpRoute(role: widget.role));
+                        setState(() {
+                          _rememberMe = !_rememberMe;
+                        });
                       },
+                      child: Image.asset(
+                        _rememberMe
+                            ? Assets.rememberCheckCircle.path
+                            : Assets.rememberCircle.path,
+                        width: 16,
+                      ),
+                    ),
+                    SizedBox(width: 8),
+                    Text(
+                      "Remember Me",
+                      style: AppTypography.regular.copyWith(
+                        color: Colors.black,
+                        fontSize: 10,
+                      ),
+                    ),
+                    Spacer(),
+                    GestureDetector(
+                      onTap: () {},
                       child: Text(
-                        "Sign Up",
-                        style: AppTypography.nunito.copyWith(
-                          decoration: TextDecoration.underline,
-                          color: Colorpallete.primary500,
-                        ),
+                        "Forgot Password?",
+                        style: AppTypography.roboto,
                       ),
                     ),
                   ],
                 ),
+                const SizedBox(height: 20.68),
+                OnboardingElevatedButtons(
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      // Form is valid, proceed with sign in
+                      final notifier = ref.read(loginProviders.notifier);
+                      if (widget.role == 'STUDENT') {
+                        final isLoggedIn = await notifier.studentLogin(
+                            emailController.text, passwordController.text);
+                        if (isLoggedIn && mounted) {
+                          context.router.push(const StudentBottomNavigationBarRoute());
+                        }
+                      } else  if (widget.role == 'ADMIN') {
+                        final isLoggedIn = await notifier.login(
+                            emailController.text, passwordController.text);
+                        if (isLoggedIn && mounted) {
+                          context.router.push(const StudentBottomNavigationBarRoute());
+                        }
+                      } else {
+                        final isLoggedIn = await notifier.login(
+                            emailController.text, passwordController.text);
+                        if (isLoggedIn && mounted) {
+                          context.router.push(const BottomNavigationBarWidget());
+                        }
+                      }
+                     
+                    }
+                  },
+                  text: 'Sign In',
+                ),
+                if (widget.role != 'ADMIN') ...[
+                  const SizedBox(height: 25),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Don't have an account? ",
+                        style: AppTypography.nunito.copyWith(color: Colors.black),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          context.router.push(SignUpRoute(role: widget.role));
+                        },
+                        child: Text(
+                          "Sign Up",
+                          style: AppTypography.nunito.copyWith(
+                            decoration: TextDecoration.underline,
+                            color: Colorpallete.primary500,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ],
-            ],
+            ),
           ),
         ),
       ),

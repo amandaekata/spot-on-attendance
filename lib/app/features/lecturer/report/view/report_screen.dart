@@ -20,7 +20,7 @@ class _ReportScreenState extends State<ReportScreen> {
     return  Scaffold(backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title:  Text('Report',style: AppTypography.nunitoSans,),
+        title:  Text('Report',style: AppTypography.appBar,),
         centerTitle: false,
         actions: [
           IconButton(

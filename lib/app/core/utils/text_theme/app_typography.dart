@@ -46,4 +46,9 @@ abstract class AppTypography {
     fontSize: 16,
     fontWeight: FontWeight.w600,
   );
+  //appbar
+  static final appBar = GoogleFonts.quicksand(
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+  );
 }
